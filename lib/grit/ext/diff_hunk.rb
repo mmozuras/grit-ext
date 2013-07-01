@@ -1,5 +1,7 @@
 module Grit
   class DiffHunk
+    attr_reader :lines
+
     def initialize(header, diff_hunk)
       @lines = diff_hunk.each_with_index.map do |line, index|
         content = line[1..line.length - 1]
@@ -8,34 +10,22 @@ module Grit
                  when '-' then :removed
                  when ' ' then :unchanged
                  end
-        {
-          content: content,
-          status: status,
-          position: header.start + index
-        }
+        position = header.start + index
+
+        DiffHunkLine.new(content, status, position)
       end
     end
 
-    def lines
-      @lines
-    end
-
     def added
-      lines_by_status(:added)
+      @lines.find_all { |line| line.added? }
     end
 
     def removed
-      lines_by_status(:removed)
+      @lines.find_all { |line| line.removed? }
     end
 
     def unchanged
-      lines_by_status(:unchanged)
-    end
-
-    private
-
-    def lines_by_status(status)
-      @lines.find_all { |line| line[:status] == status }
+      @lines.find_all { |line| line.unchanged? }
     end
   end
 end

@@ -20,9 +20,9 @@ eos
         }
 
         its(:count) { should == 6 }
-        specify { subject[3][:content].should == '    three' }
-        specify { subject[3][:status].should == :added }
-        specify { subject[3][:position].should == 13 }
+        specify { subject[3].content.should == '    three' }
+        specify { subject[3].status.should == :added }
+        specify { subject[3].position.should == 13 }
       end
     end
   end
