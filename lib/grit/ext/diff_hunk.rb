@@ -11,11 +11,11 @@ module Grit
                  when '-' then :removed
                  when ' ' then :unchanged
                  else
-                   :ignore
+                   nil
                  end
         position = header.start + index
 
-        DiffLine.new(content, status, position) if status != :ignore
+        DiffLine.new(content, status, position) if status
       end.compact
     end
 

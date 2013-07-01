@@ -14,4 +14,4 @@ task :bundle do
 end
 
 task(:default).clear
-task default: [:bundle, :spec]
+task :default => [:bundle, :spec]
