@@ -22,5 +22,9 @@ module Grit
       start, count = s.split(',')
       [start.to_i, count.to_i]
     end
+
+    def to_s
+      "@@ -#{removed_start},#{removed_count} +#{added_start},#{added_count} @@"
+    end
   end
 end
