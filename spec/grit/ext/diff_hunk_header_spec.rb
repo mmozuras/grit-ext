@@ -6,9 +6,15 @@ module Grit
 
     subject { diff_hunk_header }
 
-    let(:header) { '@@ -10,4 +10,6 @@' }
+    let(:header) { '@@ -10,4 +11,6 @@' }
 
-    its(:start) { should == 10 }
+    its(:removed_start) { should == 10 }
+    its(:removed_count) { should == 4 }
+
+    its(:added_start) { should == 11 }
+    its(:added_count) { should == 6 }
+
+    its(:start) { should == 11 }
     its(:count) { should == 6 }
   end
 end
