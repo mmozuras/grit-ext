@@ -6,7 +6,7 @@ module Grit
            .find_all { |line, index| line.start_with?('@@') }
            .map { |line, index| [DiffHeader.new(line), index] }
            .map { |header, index|
-             DiffHunk.new(header, lines[index, header.count])
+             DiffHunk.new(header, lines[index, header.count + 1])
            }
     end
   end

@@ -3,17 +3,20 @@ module Grit
     attr_reader :lines
 
     def initialize(header, diff_hunk)
+      @header = header
       @lines = diff_hunk.each_with_index.map do |line, index|
         content = line[1..line.length - 1]
         status = case line[0]
                  when '+' then :added
                  when '-' then :removed
                  when ' ' then :unchanged
+                 else
+                   :ignore
                  end
         position = header.start + index
 
-        DiffLine.new(content, status, position)
-      end
+        DiffLine.new(content, status, position) if status != :ignore
+      end.compact
     end
 
     def added
@@ -26,6 +29,10 @@ module Grit
 
     def unchanged
       @lines.find_all { |line| line.unchanged? }
+    end
+
+    def to_s
+      "#{@header}\n#{lines.join("\n")}"
     end
   end
 end
