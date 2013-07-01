@@ -11,5 +11,17 @@ module Grit
     def unchanged?
       status == :unchanged
     end
+
+    def to_s
+      symbol = case status
+               when :added
+                 '+'
+               when :removed
+                 '-'
+               when :unchanged
+                 ' '
+               end
+      "#{symbol}#{content}"
+    end
   end
 end
