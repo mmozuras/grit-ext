@@ -12,7 +12,7 @@ module Grit
                  end
         position = header.start + index
 
-        DiffHunkLine.new(content, status, position)
+        DiffLine.new(content, status, position)
       end
     end
 

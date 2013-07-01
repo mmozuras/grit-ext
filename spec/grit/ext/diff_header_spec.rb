@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 module Grit
-  describe DiffHunkHeader do
-    let(:diff_hunk_header) { DiffHunkHeader.new(header) }
+  describe DiffHeader do
+    let(:diff_hunk_header) { DiffHeader.new(header) }
 
     subject { diff_hunk_header }
 

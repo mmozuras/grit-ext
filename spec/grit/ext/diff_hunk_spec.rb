@@ -8,7 +8,7 @@ module Grit
       subject { diff_hunk.lines }
 
       context 'hunk with two added lines' do
-        let(:header) { DiffHunkHeader.new('@@ -10,4 +10,6 @@') }
+        let(:header) { DiffHeader.new('@@ -10,4 +10,6 @@') }
         let(:hunk) { <<-eos
    if something
      one

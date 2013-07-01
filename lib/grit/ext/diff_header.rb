@@ -1,5 +1,5 @@
 module Grit
-  class DiffHunkHeader
+  class DiffHeader
     attr_reader :removed_start, :removed_count,
                 :added_start, :added_count
 
