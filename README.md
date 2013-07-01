@@ -1,5 +1,7 @@
 # grit-ext
 
+[![Build Status](https://secure.travis-ci.org/mmozuras/grit-ext.png)](http://travis-ci.org/mmozuras/grit-ext)
+
 ## Resources
 
 * [grit](https://github.com/mojombo/grit)
