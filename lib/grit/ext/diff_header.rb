@@ -7,7 +7,7 @@ module Grit
     alias_method :count, :added_count
 
     def initialize(hunk_header)
-      groups = hunk_header.split('-').last.split('+')
+      groups = hunk_header.split('-')[1].split('+')
 
       removed = groups.first.strip
       added = groups.last.sub(' @@', '').strip
