@@ -29,14 +29,16 @@ module Grit
      one
 +    two
 +    three
+-    two_and_a_half
      four
    end
 eos
         }
 
         its(:count) { should == 1 }
-        specify { subject.first.lines.count.should == 6 }
+        specify { subject.first.lines.count.should == 7 }
         specify { subject.first.added.count.should == 2 }
+        specify { subject.first.removed.count.should == 1 }
       end
 
       context 'two hunks' do

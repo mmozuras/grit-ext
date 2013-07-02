@@ -13,9 +13,11 @@ module Grit
                  else
                    nil
                  end
-        position = header.start + index
 
-        DiffLine.new(content, status, position) if status
+        if status
+          position = header.start + index
+          DiffLine.new(content, status, position)
+        end
       end.compact
     end
 

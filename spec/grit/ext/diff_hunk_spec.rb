@@ -5,12 +5,13 @@ module Grit
     let(:diff_hunk) { DiffHunk.new(header, hunk.split("\n")) }
 
     shared_context 'hunk with two added lines' do
-      let(:header) { DiffHeader.new('@@ -10,4 +10,6 @@') }
+      let(:header) { DiffHeader.new('@@ -10,5 +10,6 @@') }
       let(:hunk) { <<-eos
    if something
      one
 +    two
 +    three
+-    two_and_a_half
      four
    end
 eos
@@ -21,10 +22,14 @@ eos
       include_context 'hunk with two added lines'
       subject { diff_hunk.lines }
 
-      its(:count) { should == 6 }
+      its(:count) { should == 7 }
       specify { subject[3].content.should == '    three' }
       specify { subject[3].status.should == :added }
       specify { subject[3].position.should == 13 }
+
+      specify { subject[6].content.should == '  end' }
+      specify { subject[6].status.should == :unchanged }
+      specify { subject[6].position.should == 16 }
     end
 
     describe '#added' do
@@ -38,7 +43,7 @@ eos
       include_context 'hunk with two added lines'
       subject { diff_hunk.removed }
 
-      its(:count) { should == 0 }
+      its(:count) { should == 1 }
     end
 
     describe '#unchanged' do
