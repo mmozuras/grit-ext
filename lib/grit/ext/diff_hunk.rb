@@ -15,8 +15,8 @@ module Grit
                  end
 
         if status
-          position = header.start + index
-          DiffLine.new(content, status, position)
+          diff_position = header.start + index
+          DiffLine.new(content, status, diff_position)
         end
       end.compact
     end

@@ -1,5 +1,5 @@
 module Grit
-  class DiffLine < Struct.new(:content, :status, :position)
+  class DiffLine < Struct.new(:content, :status, :diff_position)
     def added?
       status == :added
     end

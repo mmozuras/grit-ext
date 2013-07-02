@@ -25,11 +25,11 @@ eos
       its(:count) { should == 7 }
       specify { subject[3].content.should == '    three' }
       specify { subject[3].status.should == :added }
-      specify { subject[3].position.should == 13 }
+      specify { subject[3].diff_position.should == 13 }
 
       specify { subject[6].content.should == '  end' }
       specify { subject[6].status.should == :unchanged }
-      specify { subject[6].position.should == 16 }
+      specify { subject[6].diff_position.should == 16 }
     end
 
     describe '#added' do
