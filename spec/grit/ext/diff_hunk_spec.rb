@@ -25,11 +25,18 @@ eos
       its(:count) { should == 7 }
       specify { subject[3].content.should == '    three' }
       specify { subject[3].status.should == :added }
-      specify { subject[3].diff_position.should == 13 }
+      specify { subject[3].diff_position.should == 3 }
+      specify { subject[3].line_number.should == 13 }
+
+      specify { subject[4].content.should == '    two_and_a_half' }
+      specify { subject[4].status.should == :removed }
+      specify { subject[4].diff_position.should == 4 }
+      specify { subject[4].line_number.should == 12 }
 
       specify { subject[6].content.should == '  end' }
       specify { subject[6].status.should == :unchanged }
-      specify { subject[6].diff_position.should == 16 }
+      specify { subject[6].diff_position.should == 6 }
+      specify { subject[6].line_number.should == 15 }
     end
 
     describe '#added' do

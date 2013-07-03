@@ -4,19 +4,23 @@ module Grit
 
     def initialize(header, diff_hunk)
       @header = header
-      @lines = diff_hunk.each_with_index.map do |line, index|
+      @lines = []
+
+      diff_hunk.each_with_index.map do |line, index|
         content = line[1..line.length - 1]
-        status = case line[0]
-                 when '+' then :added
-                 when '-' then :removed
-                 when ' ' then :unchanged
-                 else
-                   nil
-                 end
+        status = DiffLine.status_from_char(line[0])
 
         if status
-          diff_position = header.start + index
-          DiffLine.new(content, status, diff_position)
+          line_number = header.start + index
+
+          case status
+          when :added, :unchanged
+            line_number = line_number - removed.count
+          when :removed
+            line_number = line_number - added.count
+          end
+
+          @lines << DiffLine.new(content, status, line_number, index)
         end
       end.compact
     end
