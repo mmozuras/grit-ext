@@ -1,4 +1,5 @@
 require 'grit'
+require 'grit/ext/blob'
 require 'grit/ext/diff'
 require 'grit/ext/diff_hunk'
 require 'grit/ext/diff_header'
