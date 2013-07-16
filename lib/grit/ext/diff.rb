@@ -1,5 +1,7 @@
 module Grit
   class Diff
+    attr_reader :repo
+
     def hunks
       header_lines.each_with_index
                   .map { |header, index|
