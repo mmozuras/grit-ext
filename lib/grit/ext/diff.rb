@@ -11,6 +11,14 @@ module Grit
       }
     end
 
+    def full_a_path
+      File.join(repo.working_dir, a_path)
+    end
+
+    def full_b_path
+      File.join(repo.working_dir, b_path)
+    end
+
     protected
 
     def lines
