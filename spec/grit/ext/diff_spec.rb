@@ -12,16 +12,8 @@ module Grit
   describe Diff do
     let(:grit_diff) { FakeDiff.new(diff) }
 
-    describe '#hunks' do
-      subject { grit_diff.hunks }
-
-      context 'empty diff' do
-        let(:diff) { '' }
-        its(:count) { should == 0 }
-      end
-
-      context 'one hunk' do
-        let(:diff) { <<-eos
+    shared_context 'diff with one hunk' do
+      let(:diff) { <<-eos
 --- a
 +++ b
 @@ -10,4 +10,6 @@
@@ -34,15 +26,10 @@ module Grit
    end
 eos
         }
+    end
 
-        its(:count) { should == 1 }
-        specify { subject.first.lines.count.should == 7 }
-        specify { subject.first.added.count.should == 2 }
-        specify { subject.first.removed.count.should == 1 }
-      end
-
-      context 'two hunks' do
-        let(:diff) { <<-eos
+    shared_context 'diff with two hunks' do
+      let(:diff) { <<-eos
 --- a
 +++ b
 @@ -7,3 +7,3 @@
@@ -54,6 +41,49 @@ eos
 +    make stuff happen
 eos
         }
+    end
+
+    describe '#added' do
+      subject { grit_diff.added }
+
+      context 'one hunk' do
+        include_context 'diff with one hunk'
+
+        its(:count) { should == 2 }
+        its(:'first.added?') { should be_true }
+      end
+    end
+
+    describe '#removed' do
+      subject { grit_diff.removed }
+
+      context 'two hunks' do
+        include_context 'diff with two hunks'
+
+        its(:count) { should == 1 }
+        its(:'first.removed?') { should be_true }
+      end
+    end
+
+    describe '#hunks' do
+      subject { grit_diff.hunks }
+
+      context 'empty diff' do
+        let(:diff) { '' }
+        its(:count) { should == 0 }
+      end
+
+      context 'one hunk' do
+        include_context 'diff with one hunk'
+
+        its(:count) { should == 1 }
+        specify { subject.first.lines.count.should == 7 }
+        specify { subject.first.added.count.should == 2 }
+        specify { subject.first.removed.count.should == 1 }
+      end
+
+      context 'two hunks' do
+        include_context 'diff with two hunks'
 
         its(:count) { should == 2 }
       end

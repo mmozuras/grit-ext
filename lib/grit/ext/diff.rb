@@ -19,7 +19,19 @@ module Grit
       File.join(repo.working_dir, b_path)
     end
 
+    def added
+      hunks_lines {|h| h.added }
+    end
+
+    def removed
+      hunks_lines {|h| h.removed }
+    end
+
     protected
+
+    def hunks_lines
+      hunks.collect { |h| yield(h) }.flatten
+    end
 
     def lines
       @lines ||= diff.split("\n")
