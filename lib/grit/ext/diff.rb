@@ -12,11 +12,11 @@ module Grit
     end
 
     def full_a_path
-      File.join(repo.working_dir, a_path)
+      full(a_path)
     end
 
     def full_b_path
-      File.join(repo.working_dir, b_path)
+      full(b_path)
     end
 
     def added
@@ -31,6 +31,10 @@ module Grit
 
     def hunks_lines
       hunks.collect { |h| yield(h) }.flatten
+    end
+
+    def full(path)
+      File.join(repo.working_dir, path)
     end
 
     def lines
