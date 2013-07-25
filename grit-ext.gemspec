@@ -7,14 +7,13 @@ Gem::Specification.new do |s|
   s.name        = 'grit-ext'
   s.version     = Grit::Ext::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ['Mindaugas Mozūras']
-  s.email       = ['mindaugas.mozuras@gmail.com']
+  s.author      = 'Mindaugas Mozūras'
+  s.email       = 'mindaugas.mozuras@gmail.com'
   s.homepage    = 'http://github.org/mmozuras/grit-ext'
   s.summary     = 'grit-ext'
   s.description = 'Collection of extensions for grit'
 
   s.required_rubygems_version = '>= 1.3.6'
-  s.rubyforge_project         = 'grit-ext'
   s.license = 'MIT'
 
   s.files         = Dir.glob('{lib}/**/*') + %w[LICENSE README.md]
