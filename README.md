@@ -14,6 +14,12 @@ To use [grit-ext][], after installing, just require 'grit-ext':
 All of the extensions, additionally to normal grit classes, will be available to
 you. You can get a good overview of available classes and methods on [rdoc.info](http://rdoc.info/github/mmozuras/grit-ext).
 
+## Installation
+
+Install like any other Ruby gem:
+
+    gem install grit-ext
+
 [grit-ext]: https://rubygems.org/gems/grit-ext
 [grit]: https://github.com/mojombo/grit
 [pronto]: https://github.com/mmozuras/pronto
