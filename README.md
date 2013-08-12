@@ -2,8 +2,7 @@
 
 [![Build Status](https://secure.travis-ci.org/mmozuras/grit-ext.png)](http://travis-ci.org/mmozuras/grit-ext)
 
-[grit-ext][] adds additional functionality to [grit][]. It was primarily created
-to be used by [pronto][].
+[grit-ext][] adds additional functionality to [grit][].
 
 ## Usage
 
@@ -22,4 +21,3 @@ Install like any other Ruby gem:
 
 [grit-ext]: https://rubygems.org/gems/grit-ext
 [grit]: https://github.com/mojombo/grit
-[pronto]: https://github.com/mmozuras/pronto
