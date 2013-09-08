@@ -1,6 +1,7 @@
 # grit-ext
 
 [![Build Status](https://secure.travis-ci.org/mmozuras/grit-ext.png)](http://travis-ci.org/mmozuras/grit-ext)
+[![Dependency Status](https://gemnasium.com/mmozuras/grit-ext.png)](https://gemnasium.com/mmozuras/grit-ext)
 
 [grit-ext][] adds additional functionality to [grit][].
 
