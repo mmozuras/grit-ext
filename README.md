@@ -1,5 +1,6 @@
 # grit-ext
 
+[![Code Climate](https://codeclimate.com/github/mmozuras/grit-ext.png)](https://codeclimate.com/github/mmozuras/grit-ext)
 [![Build Status](https://secure.travis-ci.org/mmozuras/grit-ext.png)](http://travis-ci.org/mmozuras/grit-ext)
 [![Dependency Status](https://gemnasium.com/mmozuras/grit-ext.png)](https://gemnasium.com/mmozuras/grit-ext)
 
