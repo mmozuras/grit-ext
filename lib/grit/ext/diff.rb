@@ -4,11 +4,11 @@ module Grit
 
     def hunks
       header_lines.each_with_index
-                  .map { |header, index|
+                  .map do |header, index|
         next_header = header_lines[index + 1]
         next_line_number = next_header ? next_header[1] : lines.count
         DiffHunk.new(header[0], lines[header[1], next_line_number - 1])
-      }
+      end
     end
 
     def full_a_path
@@ -20,17 +20,17 @@ module Grit
     end
 
     def added
-      hunks_lines {|h| h.added }
+      hunks_lines { |h| h.added }
     end
 
     def removed
-      hunks_lines {|h| h.removed }
+      hunks_lines { |h| h.removed }
     end
 
     protected
 
     def hunks_lines
-      hunks.collect { |h| yield(h) }.flatten
+      hunks.map { |h| yield(h) }.flatten
     end
 
     def full(path)
@@ -43,11 +43,11 @@ module Grit
 
     def header_lines
       @header_lines ||= lines.each_with_index
-           .find_all { |line, index| line.start_with?('@@') }
-           .map { |line, index|
+           .select { |line, _index| line.start_with?('@@') }
+           .map do |line, index|
              header = DiffHeader.new(line)
              [header, index]
-           }
+           end
     end
   end
 end

@@ -13,7 +13,7 @@ module Grit
     let(:grit_diff) { FakeDiff.new(diff) }
 
     shared_context 'diff with one hunk' do
-      let(:diff) { <<-eos
+      let(:diff) do <<-eos
 --- a
 +++ b
 @@ -10,4 +10,6 @@
@@ -25,11 +25,11 @@ module Grit
      four
    end
 eos
-        }
+      end
     end
 
     shared_context 'diff with two hunks' do
-      let(:diff) { <<-eos
+      let(:diff) do <<-eos
 --- a
 +++ b
 @@ -7,3 +7,3 @@
@@ -40,7 +40,7 @@ eos
    for i in list
 +    make stuff happen
 eos
-        }
+      end
     end
 
     describe '#added' do

@@ -6,7 +6,7 @@ module Grit
 
     shared_context 'hunk with two added lines' do
       let(:header) { DiffHeader.new('@@ -10,5 +10,6 @@') }
-      let(:hunk) { <<-eos
+      let(:hunk) do <<-eos
    if something
      one
 +    two
@@ -15,7 +15,7 @@ module Grit
      four
    end
 eos
-      }
+      end
     end
 
     describe '#lines' do

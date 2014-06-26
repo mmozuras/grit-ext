@@ -6,7 +6,7 @@ module Grit
       @header = header
       @lines = []
 
-      diff_hunk.each_with_index.map do |line, index|
+      diff_hunk.each_with_index do |line, index|
         content = line[1..line.length - 1]
         status = DiffLine.status_from_char(line[0])
 
@@ -15,9 +15,9 @@ module Grit
 
           case status
           when :added, :unchanged
-            line_number = line_number - removed.count
+            line_number -= removed.count
           when :removed
-            line_number = line_number - added.count
+            line_number -= added.count
           end
 
           @lines << DiffLine.new(content, status, line_number, index)
@@ -26,15 +26,15 @@ module Grit
     end
 
     def added
-      @lines.find_all { |line| line.added? }
+      @lines.select { |line| line.added? }
     end
 
     def removed
-      @lines.find_all { |line| line.removed? }
+      @lines.select { |line| line.removed? }
     end
 
     def unchanged
-      @lines.find_all { |line| line.unchanged? }
+      @lines.select { |line| line.unchanged? }
     end
 
     def to_s

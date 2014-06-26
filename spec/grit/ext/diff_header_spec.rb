@@ -33,4 +33,3 @@ module Grit
     end
   end
 end
-
