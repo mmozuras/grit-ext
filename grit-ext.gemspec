@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- {spec}/*`.split("\n")
   s.require_paths = ['lib']
 
-  s.add_dependency 'grit', '~> 2.5.0'
-  s.add_development_dependency 'rake', '~> 10.1.0'
-  s.add_development_dependency 'rspec', '~> 2.13.0'
+  s.add_runtime_dependency 'grit', '~> 2.5', '>= 2.5.0'
+  s.add_development_dependency 'rake', '~> 10.1', '>= 10.1.0'
+  s.add_development_dependency 'rspec', '~> 2.13', '>= 2.13.0'
 end
